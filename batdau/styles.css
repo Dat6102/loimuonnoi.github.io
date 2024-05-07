@@ -1,0 +1,63 @@
+/* Định nghĩa font */
+@font-face {
+    font-family: 'CustomFont'; /* Đặt tên font chữ */
+    src: url('anh/fonts/font2.ttf') format('truetype'); /* Đường dẫn tới font */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS cho body */
+body {
+    font-family: 'CustomFont', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5E0E7;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #B6C0CC;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.phanTiepTheo {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F5E0E7;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #B6C0CC;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}

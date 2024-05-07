@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xin chào!</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .phanTiepTheo {
+            display: none;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #07f045;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:disabled {
+            background-color: #F00707; /* Màu xanh lá cây */
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #07f045;
+        }
+    </style>
+    <script src="vanban.js"></script>
+    <script>
+        // Hàm hiển thị phần tiếp theo và khóa nút trong 3 giây
+        function hienThiPhanTiepTheo() {
+            var phanTiepTheoHienTai = document.querySelector(".phanTiepTheo:not([style='display: none;'])");
+            var phanTiepTheoTiepTheo = phanTiepTheoHienTai.nextElementSibling;
+            if (phanTiepTheoTiepTheo) {
+                phanTiepTheoHienTai.style.display = "none";
+                phanTiepTheoTiepTheo.style.display = "block";
+            } else {
+                window.location.href = "anh/anh.html";
+            }
+
+            // Khóa nút trong 3 giây
+            var nut = document.querySelector("button");
+            nut.disabled = true;
+            setTimeout(function() {
+                nut.disabled = false;
+            }, 3000);
+        }
+
+        // Gọi hàm đọc và hiển thị phần văn bản khi trang được tải
+        window.onload = function() {
+            docVanBan();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Button để hiển thị phần tiếp theo -->
+        <button onclick="hienThiPhanTiepTheo()">Ấn vào đây để tiếp tục!</button>
+    </div>
+</body>
+</html>
