@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập ngày tháng năm sinh</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script>
+        function highlightButton() {
+            var confirmButton = document.getElementById("confirmButton");
+            confirmButton.style.backgroundColor = "#28a745";
+        }
+
+        function resetButton() {
+            var confirmButton = document.getElementById("confirmButton");
+            confirmButton.style.backgroundColor = "#B6C0CC";
+        }
+
+        function redirectBasedOnInput() {
+            var birthdate = document.getElementById("birthdate").value;
+            if (birthdate === "19/1/2010") {
+                window.location.href = "batdau/start.html";
+            } else {
+                window.location.href = "end.html";
+            }
+        }
+    </script>
+</head>
+<body>
+    <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+     Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <h1>Nhập ngày tháng năm sinh của bạn</h1>
+        <p>Ví dụ: 11/2/2010</p>
+        <input type="text" id="birthdate" name="birthdate" onfocus="highlightButton()" onblur="resetButton()" onkeydown="if(event.keyCode==13) redirectBasedOnInput()">
+        <button id="confirmButton" onclick="redirectBasedOnInput()">Xác nhận</button>
+    </div>
+</body>
+</html>
