@@ -1,0 +1,66 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Định nghĩa font */
+@font-face {
+    font-family: 'CustomFont'; /* Đặt tên font chữ */
+    src: url('fonts/font2.ttf') format('truetype'); /* Đường dẫn tới font */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CSS cho body */
+body {
+    font-family: 'CustomFont', Arial, sans-serif;
+    background-color: #EEEBE6;
+    color: #333;
+    overflow-x: hidden; /* Ẩn thanh trượt ngang */
+}
+
+/* CSS cho layout của album */
+.album-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    max-width: 1200px; /* Giới hạn chiều rộng của album */
+    margin: 0 auto; /* Canh giữa album */
+}
+
+.album-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.album-item:hover {
+    transform: scale(1.05);
+}
+
+.album-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* CSS cho văn bản trên */
+.album-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* CSS cho thanh trượt */
+::-webkit-scrollbar {
+    width: 10px; /* Chiều rộng thanh trượt */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #A5CCD3; /* Màu của thanh trượt */
+    border-radius: 5px; /* Bo tròn viền thanh trượt */
+}

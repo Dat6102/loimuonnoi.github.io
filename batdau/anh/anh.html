@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album ảnh</title>
+    <!-- Đường dẫn tới file CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* CSS cho layout của album */
+        .album-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .album-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .album-item:hover {
+            transform: scale(1.05);
+        }
+
+        .album-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        /* CSS cho màn hình tối */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Màu đen có độ mờ 70% */
+        }
+
+        .modal img {
+            display: block;
+            margin: auto;
+            margin-top: 10%;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="album-container">
+        <p>Đây là những gì sudi còn giữ lại được, bây giờ trả lại cho hngoc nè=). Tạm biệt hngocc nhaa, chúc hngoc sẽ luôn hạnh phúc và sẽ sớm tìm được ai đó luôn yêu thương bên cạnh hngoc hơn cả tdat nữaa:>               Tdat yêu hngoc lắmm</p>
+        <!-- Thêm các ảnh trong album -->
+    </div>
+
+    <!-- Màn hình tối -->
+    <div class="modal" id="modal">
+        <img id="modalImg">
+    </div>
+
+    <script>
+        // Hàm lấy danh sách ảnh từ thư mục .img và hiển thị chúng trong album
+        window.onload = function() {
+            var albumContainer = document.querySelector(".album-container");
+            var imgDirectory = ".img/"; // Đường dẫn tới thư mục chứa ảnh
+            var numberOfImages = 27; // Số lượng ảnh trong thư mục
+            // Hiển thị ảnh trong album
+            for (var i = 1; i <= numberOfImages; i++) {
+                var albumItem = document.createElement("div");
+                albumItem.className = "album-item";
+                albumItem.onclick = function() {
+                    hienThiAnhPhongTo(imgDirectory + this.dataset.image);
+                };
+                var img = document.createElement("img");
+                img.src = imgDirectory + i + ".jpg";
+                img.alt = "Ảnh";
+                img.dataset.image = i + ".jpg"; // Lưu tên file ảnh để sử dụng trong phóng to
+                albumItem.appendChild(img);
+                albumContainer.appendChild(albumItem);
+            }
+        };
+
+        // Hàm hiển thị ảnh phóng to
+        function hienThiAnhPhongTo(src) {
+            var modal = document.getElementById("modal");
+            var modalImg = document.getElementById("modalImg");
+            modal.style.display = "block";
+            modalImg.src = src;
+            document.body.style.overflow = "hidden"; // Ẩn thanh cuộn khi ảnh được phóng to
+        }
+
+        // Bấm Esc hoặc click ra ngoài ảnh để đóng ảnh phóng to
+        window.addEventListener("keydown", function(event) {
+            var modal = document.getElementById("modal");
+            if (event.key === "Escape" && modal.style.display === "block") {
+                modal.style.display = "none";
+                document.body.style.overflow = ""; // Hiện lại thanh cuộn khi đóng ảnh phóng to
+            }
+        });
+
+        document.getElementById("modal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                this.style.display = "none";
+                document.body.style.overflow = ""; // Hiện lại thanh cuộn khi đóng ảnh phóng to
+            }
+        });
+    </script>
+</body>
+</html>
